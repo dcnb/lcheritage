@@ -1,0 +1,54 @@
+<header class="intro person-header">
+	 <div class="row">
+         <div class="col-md-4 col-sm-12 center">
+ 
+     <a href="{{ page.ImageLink}}"><img src="{{site.baseurl}}/images/small/{{page.colltitle | | remove: " " }}.jpg" alt="{{ page.ImageTitle}}" title="{{ page.ImageTitle}}" /></a>
+ <p><a href="{{ page.ImageLink}}">{{ page.ImageTitle}}</a></p></div>
+       <div class="col-md-8 col-sm-12">
+    <h1>{{ page.colltitle }}</h1>
+    <h2><span style="font-size:smaller;"> ({{ page.TimeStart }} - {{ page.TimeEnd }})</span></h2>
+   <p >{{ page.content }}</p>
+  
+              <div class="row">
+       <div class="col-md-2 col-sm-4  col-xs-12 center card no-border"><p class="card-text"><strong>Number of Items:</strong><br/> {{ page.webitems }}</p>
+</div>
+  <div class=" col-md-4 col-sm-8 col-xs-12  center card no-border"><p class="card-text"><strong>Subjects:</strong><br/> 
+  {% assign subjects = page.Subjects | split:';' %}
+{% for subject in subjects %}
+<a class="btn-sm btn-secondary btn" href="http://www.lib.uidaho.edu/digital/collections_search.html#{{ subject | strip }}">{{ subject }}</a>
+{% endfor %}</p>
+</div>
+
+    <div class=" col-md-3 col-sm-6 col-xs-12 center card no-border"><p class="card-text"><strong>Type:</strong><br/>
+    {% assign media = page.MediaType | split:' ' %}
+{% for medium in media %}
+<a class="btn-sm btn-secondary btn" href="http://www.lib.uidaho.edu/digital/collections_search.html#{{ medium | remove: ';' }}">{{ medium | remove: ';' }}</a>
+{% endfor %}
+    </p>
+</div>
+    
+
+	<div class=" col-md-3 col-sm-6 col-xs-12 center card no-border">
+        <p class="card-text"><strong>Locations:<br/></strong> 
+         {% assign locations = page.Location | split:';' %}
+{% for location in locations %}
+<a class="btn-sm btn-secondary btn" href="http://www.lib.uidaho.edu/digital/collections_search.html#{{ location | strip }}">{{ location  }}</a>
+{% endfor %}
+</p>    
+</div>
+</div>
+ </div>
+  </div>
+   
+ 
+</header>
+	<!--<strong>Coordinates:</strong> {{ page.Lat }}, {{ page.Long }} <br/>
+   <a href="https://www.google.com/maps/@{{ page.Lat}},{{ page.Long }}z"> 
+   
+ 
+
+   <img class="card-img-top" src="http://maps.google.com/maps/api/staticmap?center={{ page.Lat }},{{ page.Long }}&zoom=12&size=350x300&maptype=satellite&sensor=false&language=&markers=color:red|label:{{ page.Title }}|{{ page.Lat  }},{{ page.Long }}" alt="Card image cap"></a>
+<div class="person-stats">
+
+
+</div>-->

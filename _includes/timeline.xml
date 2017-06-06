@@ -1,0 +1,16 @@
+<data date-time-format="iso8601">
+
+
+    {% for item in site.data.[page.Path] %}
+    {% if item.Date contains "/" %}
+    {% else %}
+    
+        <event start="{{item.Date}} 10:20:01Z" title="{{item.Title}}" link="{{item.link}}" image="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{ page.Path}}/id/{{item.cdmid}}">
+{{item.Description}}
+</event>>
+          
+
+{% endif %}
+          
+    {% endfor %}
+    </data>

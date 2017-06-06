@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+  
+  
+  
+<script type="text/javascript">
+   Timeline_ajax_url="http://www.lib.uidaho.edu/digital/timeline/timeline_2.3.0/timeline_ajax/simile-ajax-api.js";
+   Timeline_urlPrefix='http://www.lib.uidaho.edu/digital/timeline/timeline_2.3.0/timeline_js/';       
+   Timeline_parameters='bundle=true';
+  </script>
+   <script src="http://www.lib.uidaho.edu/digital/timeline/timeline_2.3.0/timeline_js/timeline-api.js"    
+      type="text/javascript">
+</script>
+
+<script type="text/javascript" src="http://www.lib.uidaho.edu/digital/timeline/sources.js"></script>
+
+
+<script type="text/javascript">
+function centerSimileAjax(date) {
+    tl.getBand(0).setCenterVisibleDate(SimileAjax.DateTime.parseGregorianDateTime(date));
+}
+
+function setupFilterHighlightControls(div, timeline, bandIndices, theme) {
+    var table = document.createElement("table");
+    var tr = table.insertRow(0);
+    
+    var td = tr.insertCell(0);
+    td.innerHTML = "Filter:";
+    
+    td = tr.insertCell(1);
+    td.innerHTML = "Highlight:";
+    
+    var handler = function(elmt, evt, target) {
+        onKeyPress(timeline, bandIndices, table);
+		
+    };
+    
+    tr = table.insertRow(1);
+    tr.style.verticalAlign = "top";
+    
+
+    td = tr.insertCell(0);
+    
+    var input = document.createElement("input");
+    input.type = "text";
+    SimileAjax.DOM.registerEvent(input, "keypress", handler);
+    td.appendChild(input);
+    
+    for (var i = 0; i < theme.event.highlightColors.length; i++) {
+        td = tr.insertCell(i + 1);
+        
+        input = document.createElement("input");
+        input.type = "text";
+        SimileAjax.DOM.registerEvent(input, "keypress", handler);
+        td.appendChild(input);
+        
+        var divColor = document.createElement("div");
+        divColor.style.height = "0.5em";
+        divColor.style.background = theme.event.highlightColors[i];
+        td.appendChild(divColor);
+    }
+    
+    td = tr.insertCell(tr.cells.length);
+    var button = document.createElement("button");
+    button.innerHTML = "Clear All";
+    SimileAjax.DOM.registerEvent(button, "click", function() {
+        clearAll(timeline, bandIndices, table);
+    });
+    td.appendChild(button);
+    
+    div.appendChild(table);
+}
+
+var timerID = null;
+function onKeyPress(timeline, bandIndices, table) {
+    if (timerID != null) {
+        window.clearTimeout(timerID);
+    }
+    timerID = window.setTimeout(function() {
+        performFiltering(timeline, bandIndices, table);
+    }, 300);
+}
+function cleanString(s) {
+    return s.replace(/^\s+/, '').replace(/\s+$/, '');
+}
+function performFiltering(timeline, bandIndices, table) {
+    timerID = null;
+    
+    var tr = table.rows[1];
+    var text = cleanString(tr.cells[0].firstChild.value);
+    
+    var filterMatcher = null;
+    if (text.length > 0) {
+        var regex = new RegExp(text, "i");
+        filterMatcher = function(evt) {
+            return regex.test(evt.getText()) || regex.test(evt.getDescription());
+        };
+    }
+    
+    var regexes = [];
+    var hasHighlights = false;
+    for (var x = 1; x < tr.cells.length - 1; x++) {
+        var input = tr.cells[x].firstChild;
+        var text2 = cleanString(input.value);
+        if (text2.length > 0) {
+            hasHighlights = true;
+            regexes.push(new RegExp(text2, "i"));
+        } else {
+            regexes.push(null);
+        }
+    }
+    var highlightMatcher = hasHighlights ? function(evt) {
+        var text = evt.getText();
+        var description = evt.getDescription();
+        for (var x = 0; x < regexes.length; x++) {
+            var regex = regexes[x];
+            if (regex != null && (regex.test(text) || regex.test(description))) {
+                return x;
+            }
+        }
+        return -1;
+    } : null;
+    
+    for (var i = 0; i < bandIndices.length; i++) {
+        var bandIndex = bandIndices[i];
+        timeline.getBand(bandIndex).getEventPainter().setFilterMatcher(filterMatcher);
+        timeline.getBand(bandIndex).getEventPainter().setHighlightMatcher(highlightMatcher);
+    }
+    timeline.paint();
+}
+function clearAll(timeline, bandIndices, table) {
+    var tr = table.rows[1];
+    for (var x = 0; x < tr.cells.length - 1; x++) {
+        tr.cells[x].firstChild.value = "";
+    }
+    
+    for (var i = 0; i < bandIndices.length; i++) {
+        var bandIndex = bandIndices[i];
+        timeline.getBand(bandIndex).getEventPainter().setFilterMatcher(null);
+        timeline.getBand(bandIndex).getEventPainter().setHighlightMatcher(null);
+    }
+    timeline.paint();
+}
+</script>
+
+  
+
+<script type="text/javascript"> var tl;
+function onLoad() {
+   var eventSource = new Timeline.DefaultEventSource();
+      var theme = Timeline.ClassicTheme.create();
+            theme.event.highlightLabelBackground = true;
+            theme.event.bubble.width = 320;
+			
+   
+  var bandInfos = [
+    Timeline.createHotZoneBandInfo({
+         zones: [
+             {   start:    "Jan 01 1910 00:00:00 GMT-0500",
+                 end:      "Jul 14 1912 00:00:00 GMT-0500",
+                 magnify:  12,
+                 unit:     Timeline.DateTime.DECADE
+             },
+			  {   start:    "Jul 15 1915 00:00:00 GMT-0500",
+                 end:      "Oct 01 1918 00:00:00 GMT-0500",
+                 magnify:  12,
+                 unit:     Timeline.DateTime.DECADE
+             },
+			  {   start:    "Oct 02 1919 00:00:00 GMT-0500",
+                 end:      "JAN 01 1923 00:00:00 GMT-0500",
+                 magnify:  12,
+                 unit:     Timeline.DateTime.DECADE
+             }
+             
+         ],				
+		eventSource:    eventSource,
+        date:           "Jul 13 1909 00:00:00 GMT",
+        width:          "3%", 
+        intervalUnit:   Timeline.DateTime.DECADE, 
+        intervalPixels: 600, 
+		overview:       true,
+		showEventText:  false, 
+        trackHeight:    0.5,
+        trackGap:       0.2,
+    }),
+	Timeline.createHotZoneBandInfo({
+         zones: [
+           {   start:    "Jan 01 1910 00:00:00 GMT-0500",
+                 end:      "Jul 14 1912 00:00:00 GMT-0500",
+                 magnify:  12,
+                 unit:     Timeline.DateTime.YEAR
+             },
+			  {   start:    "Jul 15 1915 00:00:00 GMT-0500",
+                 end:      "Oct 01 1918 00:00:00 GMT-0500",
+                 magnify:  12,
+                 unit:     Timeline.DateTime.YEAR
+             },
+			  {   start:    "Oct 02 1919 00:00:00 GMT-0500",
+                 end:      "JAN 01 1923 00:00:00 GMT-0500",
+                 magnify:  12,
+                 unit:     Timeline.DateTime.YEAR
+             }
+             
+         ],					
+		eventSource:    eventSource,
+        date:           "Jul 13 1909 00:00:00 GMT",
+        width:          "3%", 
+        intervalUnit:   Timeline.DateTime.YEAR, 
+        intervalPixels: 175, 
+		overview:       true,
+		showEventText:  false, 
+        trackHeight:    0.5,
+        trackGap:       0.2,
+    }),
+	 Timeline.createHotZoneBandInfo({
+         zones: [
+             {   start:    "Jan 01 1910 00:00:00 GMT-0500",
+                 end:      "Jul 14 1912 00:00:00 GMT-0500",
+                 magnify:  2,
+                 unit:     Timeline.DateTime.MONTH
+             },
+			  {   start:    "Jul 15 1915 00:00:00 GMT-0500",
+                 end:      "Oct 01 1918 00:00:00 GMT-0500",
+                 magnify:  2,
+                 unit:     Timeline.DateTime.MONTH
+             },
+			  {   start:    "Oct 02 1919 00:00:00 GMT-0500",
+                 end:      "JAN 01 1923 00:00:00 GMT-0500",
+                 magnify: 2,
+                 unit:     Timeline.DateTime.MONTH
+             }
+         ],
+         eventSource:    eventSource,
+        date:           "Jul 13 1909 00:00:00 GMT",
+        width:          "94%", 
+        intervalUnit:   Timeline.DateTime.MONTH, 
+        intervalPixels: 70
+		
+    })
+    
+  ];
+   bandInfos[0].syncWith = 1;
+  bandInfos[1].highlight = true;
+ 
+ bandInfos[1].syncWith = 2;
+ bandInfos[0].highlight = true;
+  tl = Timeline.create(document.getElementById("my-timeline"), bandInfos);
+  Timeline.loadXML("{% include timeline.xml %}", function(xml, url) { eventSource.loadXML(xml, url); });
+
+            setupFilterHighlightControls(document.getElementById("controls"), tl, [0, 1, 2], theme);
+}
+			
+			   function centerTimeline(month) {
+            tl.getBand(1).setCenterVisibleDate(new Date(month, 0, 1));
+        }
+    
+    
+
+var resizeTimerID = null;
+function onResize() {
+    if (resizeTimerID == null) {
+        resizeTimerID = window.setTimeout(function() {
+            resizeTimerID = null;
+            tl.layout();
+        }, 500);
+    }
+}
+
+
+</script>
+  <script>
+if (SimileAjax.Platform.browser.isIE) 
+ SimileAjax.Graphics.getWidthHeight = function(e) 
+  {return {width:e.offsetWidth+1,height:e.offsetHeight}} 
+</script>
+</head>
+  <body onload="onLoad();" onresize="onResize();" >
+{% include collectionspull.html %}
+    {% include collectionheader.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="controls" id="controls"  ></div> 
+             <!--[if lte IE 7]><script type="text/javascript">(function(){var o=document.
+getElementById('map');var i=document.createElement('iframe');i.setAttribute
+('src',o.getAttribute('data'));i.style.width=o.style.width;i.style.height=o.style.
+height;o.parentNode.replaceChild(i,o);})();</script><![endif]-->
+                    <div  id="my-timeline" style="margin:15px 5px; width: 100%; font-weight:bold; color: #666; font-size: 14px; height: 1250px; border: 1px solid #aaa"> 
+    
+
+
+</div>
+      </div>
+    </div>
+
+      {% include footer.html %}
+
+  </body>
+
+</html>
+

@@ -1,0 +1,88 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Digital Initiatives
+email: dbecker@uidaho.edu
+description: > # this means to ignore newlines until "baseurl:"
+ UI Lib Digital Initiatives
+baseurl: /digital
+  
+
+
+collections:
+  digital:
+    output: true
+    permalink: /:path/
+  index:
+    output: true
+    permalink: /:path/
+  about:
+    output: true
+    permalink: /:path/about.html
+  table:
+    output: true
+    permalink: /:path/library/
+  library:
+    output: true
+    permalink: /guidedreading/library/:path.html
+  all:
+    output: true
+    permalink: /:path/all.html
+  map:
+    output: true
+    permalink: /:path/map.html  
+  subjects:
+    output: true
+    permalink: /:path/subjects.html  
+  interview:
+    output: true
+    permalink: /:path/interview.html
+
+defaults:
+  - scope:
+      type: digital
+    values:
+      layout: collection
+  - scope:
+      type: index
+    values:
+      layout: index
+  - scope:
+      type: about
+    values:
+      layout: about
+  - scope:
+      type: map
+    values:
+      layout: map
+  - scope:
+      type: subjects
+    values:
+      layout: subjects
+  - scope:
+      type: timeline
+    values:
+      layout: timeline
+  - scope:
+      type: table
+    values:
+      layout: table
+  - scope:
+      type: all
+    values:
+      layout: all
+  - scope:
+      type: library
+    values:
+      layout: library
+  - scope:
+      type: interview
+    values:
+      layout: interview
+# Build settings
+markdown: kramdown

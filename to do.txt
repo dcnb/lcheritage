@@ -1,0 +1,7 @@
+Tasks for build
+
+Fusion Tables Database search/brows options
+clean up abou pages
+Tag Cloud?
+Automate view all
+Automate cover view

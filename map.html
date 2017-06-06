@@ -1,0 +1,46 @@
+---
+layout: default
+permalink: map.html
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Collections</h1>
+
+  
+  <div class="people-body">
+   
+  <div class="row">
+    {% for item in site.data.DigitalInitiativesAll %}
+  
+    
+  
+          {% if item.Image contains "." %}
+         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" >
+            <div class="card">
+  <img class="card-img-top" src="{{ site.baseurl }}/images/small/{{item.colltitle | | remove: " " }}.jpg" alt="{{ item.ImageTitle}}">
+  <div class="card-block">
+    <h4 class="card-title">{{ item.colltitle }}</h4>
+    <p class="card-text">{{item.Description}}</p>
+    <a href="{{ site.baseurl }}{{ item.path }}" class="btn btn-primary">Visit Site</a>
+  </div>
+</div>
+</div>
+{% else %}
+   <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" >
+  <div class="card">
+   <div class="card-block">
+  <h4 class="card-title">{{ item.colltitle }}</h4>
+    <p class="card-text">{{item.Description}}</p>
+    <a href="{{ site.baseurl }}{{ item.path }}" class="btn btn-primary">Visit Site</a>
+  </div>
+</div>
+</div>
+{% endif %}
+          
+    {% endfor %}
+ </div>
+
+
+
+</div>

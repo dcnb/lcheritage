@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Collections</h1>
+
+  
+  <div class="people-body">
+   
+  <div class="row">
+    {% assign digital = site.digital | sort: 'Alpha' %}
+    {% for collection in digital %}
+  
+    
+  
+          {% if collection.Image contains "." %}
+         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" >
+            <div class="card">
+  <a href="{{ site.baseurl }}{{ collection.url }}">
+    <img class="card-img-top" src="{{ collection.Image }}" }}.jpg" alt="{{ collection.ImageTitle}}"></a>
+  <div class="card-block">
+    <h4 class="card-title">{{ collection.colltitle }}</h4>
+    <p class="card-text">{{collection.content}}</p>
+    <a href="{{ site.baseurl }}{{ collection.url }}" class="btn btn-primary">Visit Site</a>
+  </div>
+</div>
+</div>
+{% else %}
+   <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" >
+  <div class="card">
+   <div class="card-block">
+    <h4 class="card-title">{{ collection.colltitle }}</h4>
+    <p class="card-text">{{collection.content}}</p>
+    <a href="{{ site.baseurl }}{{ collection.url }}" class="btn btn-primary">Visit Site</a>
+  </div>
+</div>
+</div>
+{% endif %}
+          
+    {% endfor %}
+ </div>
+
+
+
+</div>

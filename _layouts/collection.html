@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<header class="intro person-header">
+	<h1><a href="{{ page.Website }}">{{ page.colltitle }}</a></h1>
+	<h2>{{ page.TimeStart }} - {{ page.TimeEnd }}</h2>
+</header>
+
+<div class="person-body">
+	
+	{{ page.content }}
+	<br/>
+		<p>Subejcts: {{ page.Subjects }}<br />
+Media: {{ page.MediaType: documents }}<br/>
+Locations: {{ page.Location }}<br/>
+Coordinates {{ page.Lat }}, {{ page.Long }} </p>
+<a href="https://www.google.com/maps/@{{ page.Lat 46.728077 }},{{ page.Long }}z"><img class="google-map-photo" src="http://maps.google.com/maps/api/staticmap?center={{ page.Lat }},{{ page.Long }}&zoom=12&size=350x300&maptype=satellite&sensor=false&language=&markers=color:red|label:{{ page.Title }}|{{ page.Lat  }},{{ page.Long }}"/></a>
+	
+</div>
+<div class="person-stats">
+<img src="{{site.baseurl}}/images/small/{{page.colltitle | | remove: " " }}.jpg" alt="{{ page.ImageTitle}}" title="{{ page.ImageTitle}}"/>
+
+</div>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+  <title>{{ page.title}} by {{ page.creator}} | Guided Reading Library | Digital Initiatives | University of Idaho Library</title>
+  <meta name="description" content="{{ page.title}} by {{ page.creator}}, a part of the Guided Reading Library.">
+
+
+  
+  
+  
+  {% if page.soundid contains "nullo" %}
+      {% else %}
+      <link type="text/css" href="http://www.lib.uidaho.edu/skin/jplayer.blue.monday.css" rel="stylesheet">
+      <script type="text/javascript" src="http://www.lib.uidaho.edu/js/jquery.jplayer.min.js"></script>
+      
+      
+      {% endif %}
+</head>
+  <body>
+{% include collectionspull.html %}
+    {% include collectionheaderlib.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+         <div id="slideshow">
+            <div class="larrow"><a id="leftarrow" class="arrow" onkeydown="leftArrowPressed()" title="Previous Book" href="/digital/guidedreading/library/{{ page.prev}}.html"> &lt;
+                  </a></div>
+            <div class="larrowinfo"><a id="leftarrow" class="arrow" onkeydown="leftArrowPressed()" title="Previous Book" href="/digital/guidedreading/library/{{ page.prev}}.html">
+                  Previous<br>Book </a></div>
+            <div class="rarrow"><a id="rightarrow" class="arrow" onkeydown="rightArrowPressed()" title="Next Book" href="/digital/guidedreading/library/{{ page.next}}.html"> &gt;
+                  </a></div>
+            <div class="rarrowinfo"><a id="rightarrow" class="arrow" onkeydown="rightArrowPressed()" title="Next Book" href="/digital/guidedreading/library/{{ page.next}}.html">
+                  Next<br>Book </a></div>
+         </div>
+     <div class="row">
+      
+         <div class="col-lg-6 col-md-12 col-sm-12 center">
+ 
+  
+   <h2>{{ page.title}} by {{ page.creator}}</h2>
+   <p>{% if page.grade contains "nullo" %}Informational text about {{ page.title}} 
+   {% else %}  {{ page.grade | capitalize}}-grade informational text about {{ page.title}} {% endif %}</p>
+    <h4>Download: <a href="http://digital.lib.uidaho.edu/utils/getfile/collection/guidedread/id/{{ page.cdmid}}/filename/{{ page.title}}562.pdf" target="_blank">PDF</a> {% if page.soundid contains "nullo" %}
+     {% else %}| <a href="/digital/mp3s/{{ page.file}}.mp3">MP3</a>   {% endif %}</h4>
+            
+            </div>
+           <div class="col-lg-6 col-md-12 col-sm-12 center">
+            {% if page.soundid contains "nullo" %}
+            <p style="font-size:smaller; text-align:center;font-style:italic;">No sound file.</p>
+            {% else %}
+         
+         <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+            <div id="jp_container_1" class="jp-audio" style="margin:auto">
+               <div class="jp-type-single">
+                  <div class="jp-gui jp-interface">
+                     <ul class="jp-controls">
+                        <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+                        <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+                        <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+                        <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+                        <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+                        <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+                     </ul>
+                     <div class="jp-progress">
+                        <div class="jp-seek-bar">
+                           <div class="jp-play-bar"></div>
+                        </div>
+                     </div>
+                     <br class="hidden-md"/>
+                     <div class="jp-volume-bar">
+                        <div class="jp-volume-bar-value"></div>
+                     </div>
+                     <div class="jp-time-holder">
+                        <div class="jp-current-time"></div>
+                        <div class="jp-duration"></div>
+                        <ul class="jp-toggles">
+                           <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+                           <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="jp-details">
+                     <ul>
+                        <li><span class="jp-title"></span></li>
+                     </ul>
+                  </div>
+                  <div class="jp-no-solution"><span>Update Required</span> To play the media you will
+                     need to either update your browser to a recent version
+                     or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>. 
+                  </div>
+               </div>
+            
+              
+              
+            </div>
+             {% endif %}
+          </div> 
+          
+           </div>
+			<!--<div style="width: 650px; height: 650px;text-align:center; margin:0% auto;" class="issuuembed" data-configid="2211907/11781906"></div><script type="text/javascript" src="//e.issuu.com/embed.js" async="true"></script></div>-->
+			<iframe src="http://digital.lib.uidaho.edu/cdm/pageflip/collection/guidedread/id/{{ page.cdmid}}/type/singleitem/pftype/pdf" class="iframe-flip">
+			<p>Your browser does not support iframes.</p>
+</iframe>
+      </div>
+      {% if page.soundid contains "nullo" %}
+      {% else %}
+      <script type="text/javascript">
+    $(document).ready(function(){
+      $("#jquery_jplayer_1").jPlayer({
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            title: "{{ page.title}}",
+            mp3: "/digital//mp3s/{{ page.file}}.mp3",
+            
+          });
+        },
+        swfPath: "/js",
+        supplied: "mp3",
+		solution:"html, flash"
+		
+      });
+      $("#jquery_jplayer_1").jPlayer("load");
+    });
+  </script>
+  		     {% endif %}
+  {% include footer.html %}
+
+  </body>
+
+</html>

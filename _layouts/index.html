@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+   <title>Latah County Common Heritage Collection | Digital Initiatives | University of Idaho Library</title>
+  <meta name="description" content="{% if page.short_desc %}{{ page.short_desc | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+</head>
+  <body>
+{% include collectionspull.html %}
+    {% include collectionheader.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+       
+<div style="width:70%;margin:0% auto;" class="introparagraphs">
+<p>{{page.short_desc}} More about the collection can be found <a href="about.html">here</a>. </p>
+
+
+</div>
+<p class="center">
+<input type="text" id="quicksearch" placeholder="Search ... "> <a class="vocab info2" href="#" data-filter="">Reset Search</a> <span class="info2"><span id="numberof">610</span> of 610 items</span> </p>
+
+
+  
+  
+
+
+
+
+<div class="isotope" style="position: relative;overflow: visible;height: 2800px;width:90%;margin:0% auto;">
+  
+  
+   {% for item in site.data.[page.Path] %}
+ {% if item.type contains "image" %}
+         <div id="countit" class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
+            <div  class="card">
+  <a target="_blank" href="{{item.link}}">
+    <img class="card-img-top" src="http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=35&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0"" alt="{{ item.title}}"></a>
+  <div class="card-block">
+    <h4 class="card-title">{{ item.title }}</h4>
+     {% if item.contributor %} <p class="card-text infoint"><b>Donated by</b>: {{item.contributors}}</p>{% endif %}
+    <p class="card-text infoint"><b>Date</b>:{{item.date}}</p>
+    <p class="card-text infoint">{{item.description}}</p>
+    <p class="card-text infoint"> {% assign subjects = item.subjects | split:';' %}
+                     {% for subject in subjects %}
+                     <a class="vocab {{ subject | strip }}" data-filter="{{ subject | strip }}" href="#{{ subject | strip }}">{{ subject }}</a>
+                     {% endfor %} </p>
+    <a target="_blank" href="{{item.link}}" class="btn btn-primary">Go to Item</a>
+  </div>
+</div>
+</div>
+{% else %}
+     <div class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
+            <div id="countit" class="card">
+   <div class="card-block">
+    <h4 class="card-title">{{ item.title }}</h4>
+     <a target="_blank" href="{{item.link}}">
+                        <img class="bookimg" style="height:120px;" src="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/>
+                    </a>
+    <p class="card-text infoint"><b>Donated by</b>: {{item.contributors}}</p>
+    <p class="card-text infoint"><b>Date</b>:{{item.year}}</p>
+    <p class="card-text infoint">{{item.description}}</p>
+    <p class="card-text infoint">
+       {% assign subjects = item.keywords | split:';' %}
+                     {% for subject in subjects %}
+                     <a class="vocab {{ subject | strip }}" data-filter="{{ subject | strip }}" href="#{{ subject | strip }}">{{ subject }}</a>
+                     {% endfor %} </p>
+    <a target="_blank" href="{{item.link}}" class="btn btn-primary">Go to Item</a>
+  </div>
+</div>
+</div>
+{% endif %}
+             {% endfor %}
+
+
+</div>
+    
+  
+	
+    
+ 
+ 
+
+</div>
+</div>
+
+<!-- Page Content - Isotope Cascading Images -->
+
+
+
+<script src="http://www.lib.uidaho.edu/digital/js/isotope-docs.min.js"></script>
+<script src="http://www.lib.uidaho.edu/digital/js/jquery.infinitescroll.min.js"></script>
+
+<script src="http://www.lib.uidaho.edu/digital/js/imagesloaded.pkgd.min.js"></script>
+
+<script>
+$( function() {
+  // init Isotope
+   var qsRegex;
+
+  var $container = $('.isotope').isotope({
+     itemSelector: '.item',
+ layoutMode: 'fitRows',
+sortBy : 'random',
+
+    filter: function() {
+      return qsRegex ? $(this).text().match( qsRegex ) : true;
+    }
+  });
+$('#sorts').on( 'click', 'button', function() {
+  var sortByValue = $(this).attr('data-sort-by');
+  $container.isotope({ sortBy: sortByValue });
+  $(this).addClass('select');
+  $('#sorts button').not(this).removeClass('select');
+});
+
+  // use value of search field to filter
+  var $quicksearch = $('#quicksearch').keyup( debounce( function() {
+    qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+    $container.isotope()
+
+  }) );
+function onLayout() {
+  var numberofint = $('div.item:visible').size()
+  $("#numberof").html(numberofint);
+}
+// bind event listener
+$container.imagesLoaded().progress( function() {
+  $container.isotope('layout');
+  $container.isotope( 'on', 'layoutComplete', onLayout );
+});
+
+
+
+  
+});
+
+
+
+var filterit = function() {
+ $('#quicksearch').val('');
+$(this).addClass('selectfilter');
+$('a.vocab').not(this).removeClass('selectfilter');
+  var filterValue = $(this).attr('data-filter');
+  var filterClass = $(this).attr('data-filter').replace(" ","-").replace(" ","-");
+ $('#quicksearch').val($('#quicksearch').val() + filterValue);
+  $('#quicksearch').keyup();
+    window.location.hash = filterValue; 
+   var filterValueclass = "." + filterClass;
+$(filterValueclass).addClass('selectfilter');
+
+};
+
+//var countit = function() {
+//var numberofint = $('div.box:visible').size();
+ // $("#numberof").html(numberofint);
+ // };
+
+
+  
+ $('a.vocab').click(filterit);
+
+
+
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  
+  return function debounced() {
+    if ( timeout ) {
+      clearTimeout( timeout );
+
+    }
+    function delayed() {
+      fn();
+      timeout = null;
+    }
+    timeout = setTimeout( delayed, threshold || 100 );
+ 
+
+  }
+};
+
+ 
+
+
+</script>
+
+<script>
+var hashfilter = location.hash.substr(1).replace("%20"," ").replace("%20"," ").replace("%20"," ").replace("%20"," ");
+var hashfilterclass = "." + location.hash.substr(1).replace("%20","-").replace("%20","-").replace("%20","-").replace(" ","-").replace(" ","-").replace(" ","-");
+$(document).ready(function() {
+
+$("#quicksearch").focus();
+$('#quicksearch').val($('#quicksearch').val() + hashfilter);
+$('#quicksearch').keyup();
+$(hashfilterclass).addClass('selectfilter');
+$('.introparagraphs').animate({
+    opacity: 0.25,
+    left: "+=50",
+    height: "hide"
+  }, 300, function() {
+    // Animation complete.
+  });
+  $('.intropar').show();
+
+
+ 
+});
+$('a.vocab').click( function() {
+$('.introparagraphs').animate({
+    opacity: 0.25,
+    left: "+=50",
+    height: "hide"
+  }, 300, function() {
+    // Animation complete.
+  });
+  $('.intropar').show();
+});
+
+$('#showintro').click( function() {
+$('.introparagraphs').show();
+$('.introparagraphs').css("opacity","1");
+$('.intropar').hide();
+  });
+</script>
+<script>
+
+// sort items on button click
+
+</script>
+
+
+
+     {% include footer.html %}
+
+  </body>
+
+</html>
+  
+  

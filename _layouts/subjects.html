@@ -21,7 +21,7 @@
 {% assign subjects = item.subjects | split:';'| sort %}
                      {% for subject in subjects %}
                     
-                       <a class="vocab {{ subject | strip }} wrd tagcloud{{ subject | last | size }}" data-filter="{{ subject | strip }}" href="#{{ subject | strip }}">{{ subject }}</a>
+                       <a class="vocab {{ subject | strip }} wrd tagcloud{{ subject | last | size }}" data-filter="{{ subject | strip }}" href="index.html#{{ subject | strip }}">{{ subject }}</a>
                      {% endfor %} 
 {% endfor %} 
 

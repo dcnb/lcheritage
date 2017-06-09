@@ -2,7 +2,7 @@
 <html>
 
   {% include head.html %}
-   <title>Latah County Common Heritage Collection | Digital Initiatives | University of Idaho Library</title>
+   <title> {{page.colltitle}} | Digital Initiatives | University of Idaho Library</title>
   <meta name="description" content="{% if page.short_desc %}{{ page.short_desc | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
 </head>
@@ -14,12 +14,12 @@
       <div class="wrapper">
        
 <div style="width:70%;margin:0% auto;" class="introparagraphs">
-<p>{{page.short_desc}} More about the collection can be found <a href="about.html">here</a>. </p>
+<p>{{content}} More about Chatcolab can be found <a href="http://www.chatcolab.org/">here</a>. </p>
 
 
 </div>
 <p class="center">
-<input type="text" id="quicksearch" placeholder="Search ... "> <a class="vocab info2" href="#" data-filter="">Reset Search</a> <span class="info2"><span id="numberof">610</span> of 610 items</span> </p>
+<input type="text" id="quicksearch" placeholder="Search ... "> <a class="vocab info2" href="#" data-filter="">Reset Search</a> <span class="info2"><span id="numberof">47</span> of 47 items</span> </p>
 
 
   
@@ -54,18 +54,14 @@
      <div class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
             <div id="countit" class="card">
    <div class="card-block">
-    <h4 class="card-title">{{ item.title }}</h4>
+    <h3 class="card-title center">{{ item.title }} </h3>
+     {% if item.theme %}<h4 class="card-title center"><em>{{item.theme}}</em></h4>{% endif %}
      <a target="_blank" href="{{item.link}}">
                         <img class="bookimg" style="height:120px;" src="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/>
                     </a>
-    <p class="card-text infoint"><b>Donated by</b>: {{item.contributors}}</p>
-    <p class="card-text infoint"><b>Date</b>:{{item.year}}</p>
+    <p class="card-text infoint"><b>Date</b>:{{item.date}}</p>
     <p class="card-text infoint">{{item.description}}</p>
-    <p class="card-text infoint">
-       {% assign subjects = item.keywords | split:';' %}
-                     {% for subject in subjects %}
-                     <a class="vocab {{ subject | strip }}" data-filter="{{ subject | strip }}" href="#{{ subject | strip }}">{{ subject }}</a>
-                     {% endfor %} </p>
+   
     <a target="_blank" href="{{item.link}}" class="btn btn-primary">Go to Item</a>
   </div>
 </div>

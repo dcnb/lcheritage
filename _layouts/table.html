@@ -2,14 +2,14 @@
 <html>
 
   {% include head.html %}
-   <title>Listing of the Guided Reading Library | Digital Initiatives | University of Idaho Library</title>
+   <title>Table of Items from {{page.colltitle}} | Digital Initiatives | University of Idaho Library</title>
   <meta name="description" content="{% if page.short_desc %}{{ page.short_desc | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   
   </head>
   <body>
 {% include collectionspull.html %}
-    {% include collectionheaderlib.html %}
+    {% include collectionheader.html %}
 
     <div class="page-content">
       <div class="wrapper">
@@ -19,8 +19,7 @@
          <tr>
             <th>Thumbnail</th>
             <th>Title</th>
-            <th>Author</th>
-            <th class="grade">Grade=Level</th>
+            <th>Year</th>
             
          </tr>
       </thead>
@@ -28,21 +27,18 @@
          <tr>
               <th>Thumbnail</th>
             <th>Title</th>
-            <th>Author</th>
-            <th class="grade">Grade=Level</th>
+            <th>Year</th>
          </tr>
       </tfoot>
      
         {% for item in site.data.[page.Path] %}
          <tr >
-           <td class="links"><a href="/digital/guidedreading/library/{{item.file}}.html">
+           <td class="links"><a href="http://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id{{item.cdmid}}">
                 <img src="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}" ></a></a></td> 
-           <td class="title"><a target="_blank" href="/digital/guidedreading/library/{{item.file}}.html">{{item.title}}</a></td>
-         <td class="group"> {{item.creator}}
+           <td class="title"><a target="_blank" href="http://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id{{item.cdmid}}">{{item.title}} - {{item.theme}}</a></td>
+         <td class="group"> {{item.date}}
          </td>
-                                 <td class="grade"> {% if item.grade contains "nullo" %}
-   {% else %}  {{item.grade}}
-        {% endif %}</td>
+                                
                </tr>
                 {% endfor %}
 </table>

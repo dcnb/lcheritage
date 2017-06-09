@@ -26,7 +26,7 @@ collections:
     permalink: /:path/about.html
   table:
     output: true
-    permalink: /:path/library/
+    permalink: /:path/table.html
   library:
     output: true
     permalink: /guidedreading/library/:path.html

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+ <title>Map | {{page.colltitle}} | Digital Initiatives | University of Idaho Library</title>
+  <meta name="description" content="{% if page.short_desc %}{{ page.short_desc | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   {% include head.html %}
    <link rel="stylesheet" href="{{ "/css/leaflet.css" | prepend: site.baseurl }}">
@@ -7,11 +9,12 @@
   
 
 <script>
-var geodata = {"type":"FeatureCollection","features":[{% for item in site.data.[page.Path] %}{% if item.latitude %}
+var geodata = {"type":"FeatureCollection","features":[
+/*{% for item in site.data.[page.Path] %}{% if item.latitude %}
 {% if item.type contains "image" %}{"type":"Feature","properties":{"title":"{{ item.title }}","description":"{{ item.description }}","date":"{{ item.date }}","link":"{{ item.link }}","imagelink":"http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=35&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0","cdmid":{{ item.cdmid }}},"geometry":{"type":"Point","coordinates":[{{ item.longitude }},{{ item.latitude }}]}},
 {% else %}{"type":"Feature","properties":{"title":"{{ item.title }}","description":"{{ item.description }}","date":"{{ item.date }}","link":"{{ item.link }}","imagelink":"http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{ item.cdmid }}","cdmid":{{ item.cdmid }}},"geometry":{"type":"Point","coordinates":[{{ item.longitude }},{{ item.latitude }}]}},{% endif %}{% endif %}
-             {% endfor %}
-{"type":"Feature","properties":{"title":"Music Building, University of Idaho. Architect's drawing [117-2]","Date":1951,"Link":"http://digital.lib.uidaho.edu/cdm/ref/collection/pg1/id/340","cdmid":340},"geometry":{"type":"Point","coordinates":[-117.008155,46.725771]}}]} ;
+             {% endfor %}*/
+{"type":"Point","properties":{"title":"Chatcolab Northwest Leadership Lab","Date":1949-1995,"Link":"http://digital.lib.uidaho.edu/cdm/ref/collection/chatcolab/id/0","cdmid":0},"geometry":{"type":"Point","coordinates":[-116.767075,47.37402]}}]} ;
 </script>
 
 <style>
@@ -24,15 +27,15 @@ var geodata = {"type":"FeatureCollection","features":[{% for item in site.data.[
        {% include collectionheader.html %}
 <!-- Page Content - Map -->
     <div id="map"></div>
-     <!-- Include Fuse.js for fuzzy search : http://kiro.me/projects/fuse.html -->
+     <!-- Include Fuse.js for fuzzy search : http://kiro.me/projects/fuse.html 
         <script src="{{ "/js/fuse.js" | prepend: site.baseurl }}"></script>
         <script src="{{ "/js/leaflet.fusesearch.js" | prepend: site.baseurl }}"></script>
         <link rel="stylesheet" href="{{ "/css/leaflet.fusesearch.css" | prepend: site.baseurl }}" />
 
-        <!-- Include Info pane -->
+        <!-- Include Info pane 
         <script src="{{ "/js/leaflet.infopane.js" | prepend: site.baseurl }}"></script>
         <link rel="stylesheet" href="{{ "/css/leaflet.infopane.css" | prepend: site.baseurl }}" />
-
+-->
     <script>
 
     /* init and set zoom */

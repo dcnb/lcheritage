@@ -9,12 +9,11 @@
   
 
 <script>
-var geodata = {"type":"FeatureCollection","features":[
-/*{% for item in site.data.[page.Path] %}{% if item.latitude %}
-{% if item.type contains "image" %}{"type":"Feature","properties":{"title":"{{ item.title }}","description":"{{ item.description }}","date":"{{ item.date }}","link":"{{ item.link }}","imagelink":"http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=35&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0","cdmid":{{ item.cdmid }}},"geometry":{"type":"Point","coordinates":[{{ item.longitude }},{{ item.latitude }}]}},
-{% else %}{"type":"Feature","properties":{"title":"{{ item.title }}","description":"{{ item.description }}","date":"{{ item.date }}","link":"{{ item.link }}","imagelink":"http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{ item.cdmid }}","cdmid":{{ item.cdmid }}},"geometry":{"type":"Point","coordinates":[{{ item.longitude }},{{ item.latitude }}]}},{% endif %}{% endif %}
-             {% endfor %}*/
-{"type":"Point","properties":{"title":"Chatcolab Northwest Leadership Lab","Date":1949-1995,"Link":"http://digital.lib.uidaho.edu/cdm/ref/collection/chatcolab/id/0","cdmid":0},"geometry":{"type":"Point","coordinates":[-116.767075,47.37402]}}]} ;
+var geodata = {"type":"FeatureCollection","features":[{% for item in site.data.[page.Path] %}{% if item.latitude %}{% if item.type contains "image" %}
+{"type":"Feature","properties":{"title":"{{ item.title }}","description":"{{ item.description }}","date":"{{ item.date }}","link":"{{ item.link }}","imagelink":"http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=35&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0","cdmid":{{ item.cdmid }}},"geometry":{"type":"Point","coordinates":[{{ item.longitude }},{{ item.latitude }}]}},{% else %}
+{"type":"Feature","properties":{"title":"{{ item.title }}","description":"{{ item.description }}","date":"{{ item.date }}","link":"{{ item.link }}","imagelink":"http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{ item.cdmid }}","cdmid":{{ item.cdmid }}},"geometry":{"type":"Point","coordinates":[{{ item.longitude }},{{ item.latitude }}]}},{% endif %}{% endif %}
+             {% endfor %}
+{"type":"Feature","properties":{"title":"Weyerhaeuser Private Train","description":"The Weyerhaeuser private train in the WI&M yards at Potlatch, Idaho. The train is going either to or from the pacific Logging Congress at Spokane, Washington. The Weyerhaeuser group visits the Potlatch operation yearly in late September. A few men can be seen standing and sitting on the railroad tracks next to the train.","date":"1913-09-23","link":"http://digital.lib.uidaho.edu:80/cdm/ref/collection/phs/id/1447","imagelink":"http://digital.lib.uidaho.edu/utils/getthumbnail/collection/phs/id/1447","cdmid":1447},"geometry":{"type":"Point","coordinates":[-116.895387,46.925009]}}]} ;
 </script>
 
 <style>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+ <title>Map | {{page.colltitle}} | Digital Initiatives | University of Idaho Library</title>
+  <meta name="description" content="{% if page.short_desc %}{{ page.short_desc | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+  {% include head.html %}
+   <link rel="stylesheet" href="{{ "/css/leaflet.css" | prepend: site.baseurl }}">
+    <script src="{{ "/js/leaflet.js" | prepend: site.baseurl }}"></script>
+  
+
+<script>
+var geodata = {"type":"FeatureCollection","features":[{% for item in site.data.[page.Path] %}{% if item.latitude %}{% if item.type contains "image" %}
+{"type":"Feature","properties":{"title":"{{ item.title }}","description":"{{ item.description }}","date":"{{ item.date }}","link":"{{ item.link }}","imagelink":"http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=35&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0","cdmid":{{ item.cdmid }}},"geometry":{"type":"Point","coordinates":[{{ item.longitude }},{{ item.latitude }}]}},{% else %}
+{"type":"Feature","properties":{"title":"{{ item.title }}","description":"{{ item.description }}","date":"{{ item.date }}","link":"{{ item.link }}","imagelink":"http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{ item.cdmid }}","cdmid":{{ item.cdmid }}},"geometry":{"type":"Point","coordinates":[{{ item.longitude }},{{ item.latitude }}]}},{% endif %}{% endif %}
+             {% endfor %}
+{"type":"Feature","properties":{"title":"Weyerhaeuser Private Train","description":"The Weyerhaeuser private train in the WI&M yards at Potlatch, Idaho. The train is going either to or from the pacific Logging Congress at Spokane, Washington. The Weyerhaeuser group visits the Potlatch operation yearly in late September. A few men can be seen standing and sitting on the railroad tracks next to the train.","date":"1913-09-23","link":"http://digital.lib.uidaho.edu:80/cdm/ref/collection/phs/id/1447","imagelink":"http://digital.lib.uidaho.edu/utils/getthumbnail/collection/phs/id/1447","cdmid":1447},"geometry":{"type":"Point","coordinates":[-116.895387,46.925009]}}]} ;
+</script>
+
+<style>
+    #map { height: 1000px; }
+    .leaflet-popup-content img { max-width: 100%;}
+</style>
+</head>
+  <body>
+{% include collectionspull.html %}
+       {% include collectionheader.html %}
+<!-- Page Content - Map -->
+    <div id="map"></div>
+     <!-- Include Fuse.js for fuzzy search : http://kiro.me/projects/fuse.html 
+        <script src="{{ "/js/fuse.js" | prepend: site.baseurl }}"></script>
+        <script src="{{ "/js/leaflet.fusesearch.js" | prepend: site.baseurl }}"></script>
+        <link rel="stylesheet" href="{{ "/css/leaflet.fusesearch.css" | prepend: site.baseurl }}" />
+
+        <!-- Include Info pane 
+        <script src="{{ "/js/leaflet.infopane.js" | prepend: site.baseurl }}"></script>
+        <link rel="stylesheet" href="{{ "/css/leaflet.infopane.css" | prepend: site.baseurl }}" />
+-->
+    <script>
+
+    /* init and set zoom */
+    var map = L.map('map').setView([{{page.mapcenter}}], {{page.zoom}});
+
+    /* load map layer */ 
+  L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+	maxZoom: 16
+    }).addTo(map);
+    
+    /* add geojson marker and popup */
+    L.geoJson(geodata, {
+        pointToLayer: function(feature,latlng){
+            var marker = L.marker(latlng);
+            marker.bindPopup('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.date + '</p><a style="border:none;" href="'+feature.properties.link+'" target="_blank"><img style="border:none;overflow: auto;max-height:330px;" src="'+ feature.properties.imagelink + '" /></a><p>' + feature.properties.description + '<br><br><a href="'+feature.properties.link+'">More ...</a>'); 
+            return marker;
+        }
+    }).addTo(map);
+
+    </script>
+
+<!-- EndPage Content - Map -->
+
+
+     {% include footer.html %}
+
+  </body>
+
+</html>

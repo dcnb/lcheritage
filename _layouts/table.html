@@ -20,6 +20,8 @@
             <th>Thumbnail</th>
             <th>Title</th>
             <th>Year</th>
+            <th>Description</th>
+            <th>Keywords</th>
             
          </tr>
       </thead>
@@ -28,6 +30,8 @@
               <th>Thumbnail</th>
             <th>Title</th>
             <th>Year</th>
+             <th>Description</th>
+            <th>Keywords</th>
          </tr>
       </tfoot>
      
@@ -35,8 +39,12 @@
          <tr >
            <td class="links"><a href="http://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id{{item.cdmid}}">
                 <img src="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}" ></a></a></td> 
-           <td class="title"><a target="_blank" href="http://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id{{item.cdmid}}">{{item.title}} - {{item.theme}}</a></td>
+           <td class="title"><a target="_blank" href="http://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id{{item.cdmid}}">{{item.title}}</a></td>
          <td class="group"> {{item.date}}
+         </td>
+          <td class="group"> {{item.description}} </td>
+           <td class="group">
+           {{item.subjects}} 
          </td>
                                 
                </tr>

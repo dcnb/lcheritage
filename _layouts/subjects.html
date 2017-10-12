@@ -9,24 +9,10 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <p>  {% for item in site.data.[page.Path] %}
-        {% assign subjects = item.subjects | split:';'| sort %}
-                     {% for subject in subjects %}
-                    {{ subject }},
-                     {% endfor %},
-              {% endfor %}
-          </p>
-        <div id="htmltagcloud" style="margin: 0% auto; background: none repeat scroll 0% 0% rgb(64, 82, 79); padding: 4px; width:60%">
-            {% for item in site.data.[page.Path] %}
-{% assign subjects = item.subjects | split:';'| sort %}
-                     {% for subject in subjects %}
-                    
-                       <a class="vocab {{ subject | strip }} wrd tagcloud{{ subject | last | size }}" data-filter="{{ subject | strip }}" href="index.html#{{ subject | strip }}">{{ subject }}</a>
-                     {% endfor %} 
-{% endfor %} 
-
-      <!--{% include clouds/{{ page.Path }}.html %}-->
-      	  
+       
+<div id="htmltagcloud" style="margin: 0% auto; background: none repeat scroll 0% 0% rgb(64, 82, 79); padding: 4px; width:60%">
+    {% include clouds/{{ page.Path }}.html %}
+      	  </div>   	  
 <div style="clear: both"></div>   	  
 </div>
 		  

@@ -1,6 +1,6 @@
 ---
 colltitle: Potlatch Historical Society Collection
-webitems: 1781
+webitems: 1450
 Type: Collection
 Alpha: Potlatch Historical
 CDMID: phs
@@ -21,9 +21,9 @@ height: 448px
 Status: Top
 short_desc: Potlatch Historical Society Collection Depicting life in and around Potlatch, Idaho from 1880 to 1998
 menu: table map subjects
-mapcenter: 
+mapcenter: 46.677791,-116.869045
 fusionmap: 
-zoom: 
+zoom: 9
 Collection_num: 
 fusiondb: 
 db_where: 

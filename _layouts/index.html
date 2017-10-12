@@ -67,7 +67,7 @@
 <script src="https://www.lib.uidaho.edu/digital/js/isotope-docs.min.js"></script>
 <script src="https://www.lib.uidaho.edu/digital/js/jquery.infinitescroll.min.js"></script>
 
-        <script src="/digital/js/jquery.lazyload.js"></script>
+        <script src="../js/jquery.lazyload.js"></script>
 
 <script>
 
@@ -95,10 +95,18 @@ onLayout: function() {
   
   $imgs.lazyload({ 
         effect: "fadeIn",
-        failure_limit: Math.max($imgs.length - 1, 0)
+        failure_limit: Math.max($imgs.length - 1, 0),
+        
+        load: function() {
+        $container.isotope(); }
     });
 
-    
+
+ 
+
+
+
+ 
   // use value of search field to filter
   var $quicksearch = $('#goButton').click( function() {
     qsRegex = new RegExp( $('#quicksearch').val(), 'gi' );

@@ -32,13 +32,13 @@
 <div class="isotope" id="isocontainer" style="position: relative;overflow: visible;height: 2800px;width:90%;margin:0% auto;">
   
   
-   
+   {% for item in site.data.[page.Path] %}
  
-     <!--<div class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
+     <div class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
             <div id="countit" class="card">
    <div class="card-block">
     <h3 class="card-title center">{{ item.title }} </h3>
-     
+     {% if item.theme %}<h4 class="card-title center"><em>{{item.theme}}</em></h4>{% endif %}
      <p class="card-text center"><b>Date</b>:{{item.date}}</p>
      <p class="center">
      <a  target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}">
@@ -50,32 +50,7 @@
     <p class="center"><a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}" class="btn btn-primary">Go to Item</a></p>
   </div>
 </div>
-</div>-->
-
-
-   {% for item in site.data.[page.Path] %}
-
-         <div id="countit" class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
-            <div  class="card">
-                 <p class="center">
-  <a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}">
- 
-       {% if item.type contains "StillImage" %}
-    <img class="card-img-top lazy" src="http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=20&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0" alt="{{ item.title}}"></a>
-  {% else %}
-
-   <img class="bookimg lazy" style="height:120px;" src="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/></a>
-     {% endif %}
-  </p>
-  <div class="card-block">
-    <h4 class="card-title">{{ item.title }}</h4>
-    <p class="card-text infoint">{{item.date}}</p>
-    <p class="card-text infoint">{{item.description | truncatewords: 15}}</p>
-    <a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}" class="btn btn-primary">Go to Item</a>
-  </div>
 </div>
-</div>
-
 
              {% endfor %}
 
@@ -183,7 +158,7 @@ $('a.vocab').not(this).removeClass('selectfilter');
   $('#goButton').click();
     window.location.hash = filterValue; 
    var filterValueclass = "." + filterClass;
-//$(filterValueclass).addClass('selectfilter');
+$(filterValueclass).addClass('selectfilter');
 
 
 };

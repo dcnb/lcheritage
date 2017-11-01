@@ -14,83 +14,31 @@
       
       <div class="wrapper">
        
-<div style="width:80%;margin:0% auto;" class="introparagraphs">
-<p> The McCall Public Library Collection is a digital collection of local family history and subjects of interest. The documents were collected by the McCall Public Library and the Payette Lakes Progressive Club for over a half-century. This extensive collection of unique transcribed oral histories, obituaries, articles and photos filled up several filing cabinets in the Library. It began to be digitized in 2015, thanks to the Perc & Gladys Popsisil Shelton Foundation, the Idaho State Historical Society, and the McCall Local Option Tax funds, and was deposited in the University of Idaho digital collections starting in October 2016. Further work was supported by a grant from the Idaho Humanities Council in 2017. <!-- In the future, this site will also house the Library’s newspapers, which may include the Warren Times (1862 to 1942), Cascade Times, Stibnite Miner, Payette Lakes Star, and others.--> Thanks to the University of Idaho, all our funding sources and the many hours of volunteer work to get this project accessible to the community.</p>
-<p>You can search the books below by keyword or location.</p>
+<div style="width:70%;margin:0% auto;" class="introparagraphs">
+<p>The digital materials in the Potlatch Historical Society Collection were donated to the University of Idaho Library by the Potlatch Historical Society. Some were also collected via a community digitization day held at the Potlatch Public Library in 2017. Search and browse items using the images and links below. More about the Potlatch Historical Society can be found <a href="http://potlatchhistoricalsociety.org/">here</a>. </p>
+
 </div>
 <p class="center">
 <input type="text" id="quicksearch" placeholder="Search ... "> <input id="goButton" class="btn" title="Search" type="submit" value="Go" alt="Search" style="margin-top: -14px;"> <a class="vocab info2" href="#" data-filter="">Reset Search</a> <span class="info2"><span id="numberof">{{page.webitems}}</span> of {{page.webitems}} items</span> </p>
 
 
+  
+
+  
+
+
+
+
+<div class="isotope" id="isocontainer" style="position: relative;overflow: visible;height: 2800px;width:90%;margin:0% auto;">
+  
+  
+   
  
-<div id="filters">        
-    <div class="vocab-group js-radio-button-group" data-filter-group="subject" style="width:50%; float:left;text-align:center;">
-      <p><span class="info">Locations:</span>   <br/> 
-        
-  {% for item in site.data[page.locationfile] %}
-
- <a class="vocab {{item.location}}" href="#{{item.location | remove: ", ID"}}" data-filter="{{item.location | remove: ", ID"}}">{{item.location }}</a><br/>
-   {% endfor%}
-</p>
-      </div>
-      <div class="vocab-group js-radio-button-group" data-filter-group="subject" style="width:50%; float:left;text-align:center;">
-      <p><span class="info">Decades:</span>   <br>   <a class="vocab 181" href="#181" data-filter="181">1810s</a><br/>
-<a class="vocab 182" href="#182" data-filter="182">1820s</a><br/>
-<a class="vocab 183" href="#183" data-filter="183">1830s</a><br/>
-<a class="vocab 184" href="#184" data-filter="184">1840s</a><br/>
-<a class="vocab 185" href="#185" data-filter="185">1850s</a><br/>
-<a class="vocab 186" href="#186" data-filter="186">1860s</a><br/>
-<a class="vocab 187" href="#187" data-filter="187">1870s</a><br/>
-<a class="vocab 188" href="#188" data-filter="188">1880s</a><br/>
-<a class="vocab 189" href="#189" data-filter="189">1890s</a><br/>
-<a class="vocab 190" href="#190" data-filter="190">1900s</a><br/>
-<a class="vocab 191" href="#191" data-filter="191">1910s</a><br/>
-<a class="vocab 192" href="#192" data-filter="192">1920s</a><br/>
-<a class="vocab 193" href="#193" data-filter="193">1930s</a><br/>
-<a class="vocab 194" href="#194" data-filter="194">1940s</a><br/>
-<a class="vocab 195" href="#195" data-filter="195">1950s</a><br/>
-<a class="vocab 196" href="#196" data-filter="196">1960s</a><br/>
-<a class="vocab 197" href="#197" data-filter="197">1970s</a><br/>
-<a class="vocab 198" href="#198" data-filter="198">1980s</a><br/>
-<a class="vocab 199" href="#199" data-filter="199">1990s</a><br/>
-<a class="vocab 200" href="#200" data-filter="200">2000s</a><br/>
-<a class="vocab 201" href="#201" data-filter="201">2010s</a></p>
-        </div>
-</div>
-
-  
-
-
-
-
-<div class="isotope" id="isocontainer" style="position: relative;overflow: visible;height: 2800px;width:75%;margin:0% auto;">
-  
-  
-   {% for item in site.data.[page.Path] %}
- 
-     <div class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
+     <!--<div class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
             <div id="countit" class="card">
-              {% if page.colltitle contains 'McCall' %}
-               <div class="card-block">
-    <h3 class="card-title center">{{ item.title }} </h3>
-     <p class="card-text center"><b>Dates</b>:{{item.span}}</p>
-     <p class="center">
-     <a  target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}">
-             <img class="lazy" style="height:100px; width:auto;" data-original="https://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/>
-                    </a></p>
-                 
-    <p class="card-text center">{{item.description | truncatewords: 20}}</p>
-                        
-                      <p style="display:none"><b>Keywords:</b> {{item.keywords}} </p>
-           <p><b>Locations:</b> {{item.locations}} </p>
-               <p><b>Publisher:</b> {{item.publisher}} </p>
-                  <p style="display:none"> {{item.people}} | {{item.dates}}</p>
-    <p class="center"><a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}" class="btn btn-primary">Go to Item</a></p>
-     </div>
-  {%else%}
    <div class="card-block">
     <h3 class="card-title center">{{ item.title }} </h3>
-     {% if item.theme %}<h4 class="card-title center"><em>{{item.theme}}</em></h4>{% endif %}
+     
      <p class="card-text center"><b>Date</b>:{{item.date}}</p>
      <p class="center">
      <a  target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}">
@@ -98,13 +46,44 @@
                     </a></p>
                  
     <p class="card-text center">{{item.description | truncatewords: 20}}</p>
-    <p style="display:none;">{{item.description}}{{item.keywords}}</p>
+    <p style="display:none;">{{item.description}}{{item.subjects}}</p>
     <p class="center"><a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}" class="btn btn-primary">Go to Item</a></p>
-    
   </div>
-  {% endif %}
+</div>
+</div>-->
+
+
+   {% for item in site.data.[page.Path] %}
+
+         <div id="countit" class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
+            <div  class="card">
+                 <p class="center">
+  <a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}">
+ {% if forloop.index < 100 %}
+       {% if item.type contains "image" %}
+    <img class="card-img-top " src="http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=30&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0" alt="{{ item.title}}"></a>
+  {% else %}
+
+   <img class="bookimg " style="height:120px;" src="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/></a>
+     {% endif %}
+ {% else %}
+      {% if item.type contains "image" %}
+    <img class="card-img-top lazy" style="height:190px;width:auto;" data-original="http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=30&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0" alt="{{ item.title}}"></a>
+  {% else %}
+
+   <img class="bookimg lazy" style="height:120px;" data-original="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/></a>
+     {% endif %}
+      {% endif %}
+  </p>
+  <div class="card-block">
+    <h4 class="card-title">{{ item.title }}</h4>
+    <p class="card-text infoint">{{item.date}}</p>
+    <p class="card-text infoint">{{item.description | truncatewords: 15}}</p>
+    <a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}" class="btn btn-primary">Go to Item</a>
+  </div>
 </div>
 </div>
+
 
              {% endfor %}
 
@@ -154,8 +133,10 @@ onLayout: function() {
   
   $imgs.lazyload({ 
         effect: "fadeIn",
-        failure_limit: Math.max($imgs.length - 1, 0)
-        
+        failure_limit: Math.max($imgs.length - 1, 0),
+        load: function(){
+  setTimeout($container.isotope(), 2000);//fires this function when it appears
+}
        
     });
 
@@ -171,25 +152,11 @@ onLayout: function() {
   var $quicksearch = $('#goButton').click( function() {
     qsRegex = new RegExp( $('#quicksearch').val(), 'gi' );
     $container.isotope();
-    $('.introparagraphs').animate({
-    opacity: 0.25,
-    left: "+=50",
-    height: "hide"
-  }, 300, function() {
-    // Animation complete.
-  });
   }) ;
    
    $('#quicksearch').keypress(function(e){
         if(e.which == 13){//Enter key pressed
             $('#goButton').click();//Trigger search button click event
-            $('.introparagraphs').animate({
-    opacity: 0.25,
-    left: "+=50",
-    height: "hide"
-  }, 300, function() {
-    // Animation complete.
-  });
         }
     });
 
@@ -224,10 +191,9 @@ $('a.vocab').not(this).removeClass('selectfilter');
   var filterClass = $(this).attr('data-filter').replace(" ","-").replace(" ","-");
  $('#quicksearch').val($('#quicksearch').val() + filterValue);
   $('#goButton').click();
-  
     window.location.hash = filterValue; 
    var filterValueclass = "." + filterClass;
-$(filterValueclass).addClass('selectfilter');
+//$(filterValueclass).addClass('selectfilter');
 
 
 };
@@ -273,7 +239,7 @@ $('.introparagraphs').animate({
 else{
  
 }});
-
+/*
 $('a.vocab').click( function() {
 $('.introparagraphs').animate({
     opacity: 0.25,
@@ -290,7 +256,7 @@ $('#showintro').click( function() {
 $('.introparagraphs').show();
 $('.introparagraphs').css("opacity","1");
 $('.intropar').hide();
-  });
+  });*/
 </script>
 
 

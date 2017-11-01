@@ -20,7 +20,7 @@ width: 621px
 height: 448px
 Status: Top
 short_desc: Potlatch Historical Society Collection Depicting life in and around Potlatch, Idaho from 1880 to 1998
-menu: table map subjects all
+menu: table map subjects
 mapcenter: 
 fusionmap: 
 zoom: 

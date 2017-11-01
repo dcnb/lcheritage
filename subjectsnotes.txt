@@ -1,0 +1,55 @@
+{% for item in site.data.[page.Path]  %}
+       {% assign count = 0 %}
+        {% assign subjects = item.keywords | split:';' %}
+                     {% for subject in subjects %}
+                      {% capture count %}{{ count | plus: 1 }}{% endcapture %}
+                     
+                      <span id="10" class="wrd tagcloud3"><a href="index.html#{{ subject | strip }}">{{  subject | strip }} ({{count}})</a></span> 
+                 
+                     {% endfor %} 
+      
+     
+{% endfor %}
+
+
+
+
+{% for item in site.data.[page.Path]  %}
+ 
+        {% assign subjects = item.keywords | split:';' %}
+                 
+{% endfor %}
+ {% assign subjectsall = subjects | uniq | sort %}
+<p>
+            {{subjects}}            {{subjectsall}}
+
+                    </p>
+
+
+<div id="htmltagcloud" style="margin: 0% auto; background: none repeat scroll 0% 0% rgb(64, 82, 79); padding: 4px; width:60%">
+
+
+                    {% comment %} get collection items from data and find subjects {% endcomment %}
+{% assign items = site.data.[page.Path] %}
+{% assign subjects = "" | remove: ";" | split: " " %}
+{% for item in items %}
+	{% assign isubs = item.keywords | split: ";" %}
+    {% for s in isubs %}
+        {% assign ss = s | strip %}
+        {% assign subjects = subjects | push: ss %}
+    {% endfor %}
+{% endfor %}
+{% assign uniqueSubjects = subjects | uniq | sort %}
+<div class="subject-cloud">
+{% for unique in uniqueSubjects %}
+    {% assign count = 0 %}
+    {% for c in subjects %}
+        {% if c == unique %}
+            {% assign count = count | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+<div><a href="#{{ unique }}">{{ unique }}, {{ count }}</a></div>
+{% endfor %}
+<div style="clear: both"></div>   	  
+</div>
+<!-- End Tag Cloud -->

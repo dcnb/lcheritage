@@ -13,8 +13,21 @@
 
 
 <div id="title" class="col-md-9" >
+  {% if page.colltitle contains 'McCall' %}
+   <h2><a href="index.html" >{{ page.colltitle}}</a> 
+        {% if page.Path == "mccall" %} <span style="font-size:18px; margin-left:1%;">Limit to: <a class="limitlink" href="../mccallsubjects{{page.url | remove: "/mccall"}}">Subject Files</a> | <a class="limitlink" href="../mccallfamily{{page.url | remove: "/mccall"}}">Family Folders</a> 
+          {% elsif page.Path == "mccallsubjects" %} <span style="font-size:18px; margin-left:1%;">Go to: <a class="limitlink" href="../mccall{{page.url | remove: "/mccallsubjects"}}">All Files</a> | <a class="limitlink" href="../mccallfamily{{page.url | remove: "/mccallsubjects"}}">Family Folders  </a>
+             {% elsif page.Path == "mccallfamily" %} <span style="font-size:18px; margin-left:1%;">Go to: <a class="limitlink" href="../mccall{{page.url | remove: "/mccallfamily"}}">All Files</a> | <a class="limitlink" href="../mccallsubjects{{page.url | remove: "/mccallfamily"}}">Subject Files</a>
+              {%else %}
+            {% endif %}</h2>		
+                    <p>{{ page.short_desc}} </p>
+                    <p><em>NOTE: This site is for browsing only. Documents/PDFs only available via McCall Public Library computers. Email <a href="mailto:dbecker@uidaho.edu">dbecker@uidaho.edu</a> with any questions.</em></p>
+{%else%}
+
 		 <h2><a href="index.html" >{{ page.colltitle}}</a></h2>		 
          <p>{{ page.short_desc}} </p>
+{%endif%}
+
 </div>
 </div>	
 

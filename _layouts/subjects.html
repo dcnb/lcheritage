@@ -12,11 +12,21 @@
        
 <div id="htmltagcloud" style="margin: 0% auto; background: none repeat scroll 0% 0% rgb(64, 82, 79); padding: 4px; width:60%">
     {% include clouds/{{ page.Path }}.html %}
-      	  </div>   	  
+          </div>   	  
+    
+         <!-- {% for item in site.data.[page.Path] %}
+          <p>
+
+            {{ item.keywords }};
+            </p>
+          {%endfor%}-->
+
+          
+    
 <div style="clear: both"></div>   	  
 </div>
-		  
-<!-- End Tag Cloud -->	
+      
+	
 
       </div>
     </div>

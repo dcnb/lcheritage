@@ -42,6 +42,13 @@ collections:
   interview:
     output: true
     permalink: /:path/interview.html
+  timeline:
+    output: true
+    permalink: /:path/timeline.html
+  timelinedata:
+    output: true
+    permalink: /:path/timelinedata.xml
+
 
 defaults:
   - scope:
@@ -68,6 +75,10 @@ defaults:
       type: timeline
     values:
       layout: timeline
+  - scope:
+      type: timelinedata
+    values:
+      layout: timelinedata
   - scope:
       type: table
     values:

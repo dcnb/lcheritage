@@ -1,0 +1,8 @@
+---
+layout: nil
+---
+
+<data date-time-format="iso8601">
+ {% for item in site.data[page.Path] %}<event start="{{item.date}} 10:20:01Z" title="{{item.title | strip}}" link="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}" image="https://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}" icon="https://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}">{{item.description | strip}} | Contributor: {{item.Contributor | strip}} </event>
+ {% endfor %}
+  </data>

@@ -1,6 +1,6 @@
 ---
 colltitle: Barnard-Stockbridge Photograph Collection
-webitems: 1208
+webitems: 2358
 Type: Collection
 Alpha: Barnard
 CDMID: bar-stock

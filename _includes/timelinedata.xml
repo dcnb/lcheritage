@@ -1,0 +1,8 @@
+---
+layout: nil
+---
+
+<data date-time-format="iso8601">
+ {% for item in site.data[page.Path] %} {% if item.timelinedate  %}<event start="{{item.timelinedate}} 10:20:01Z" title="{{item.title | strip}}" link="http://omeka.cdil.us/s/hist404/item/{{item.omekaitem}}" image="http://omeka.cdil.us/files/square/{{item.id}}.jpg" icon="http://omeka.cdil.us/files/square/{{item.id}}.jpg">{{item.description | strip}} | Contributor: {{item.Contributor | strip}} </event>{% endif %}  
+ {% endfor %}
+  </data>

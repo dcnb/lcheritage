@@ -8,8 +8,11 @@
   
   </head>
   <body>
-{% include collectionspull.html %}
+ {% if page.colltitle contains 'Guided' %}
+  {% include collectionheaderlib.html %}
+ {% else %}
     {% include collectionheader.html %}
+    {% endif %}
 
     <div class="page-content">
       <div class="wrapper">
@@ -19,7 +22,7 @@
          <tr>
             <th>Thumbnail</th>
             <th>Title</th>
-            <th>Year</th>
+            <th>Author</th>
             <th>Description</th>
             <th>Keywords</th>
             
@@ -29,7 +32,7 @@
          <tr>
               <th>Thumbnail</th>
             <th>Title</th>
-            <th>Year</th>
+            <th>Author</th>
              <th>Description</th>
             <th>Keywords</th>
          </tr>
@@ -37,14 +40,14 @@
      
         {% for item in site.data.[page.Path] %}
          <tr >
-           <td class="links"><a href="http://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{item.cdmid}}">
-                <img src="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}" ></a></a></td> 
-           <td class="title"><a target="_blank" href="http://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{item.cdmid}}">{{item.title}}</a></td>
-         <td class="group"> {{item.date}}
+           <td class="links"><a href="{{ item.id }}.html">
+                <img src="https://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}" ></a></a></td> 
+           <td class="title"><a target="_blank" href="{{ item.id }}.html">{{item.title}}</a></td>
+         <td class="group"> {{item.author}}
          </td>
-          <td class="group"> {{item.description}} </td>
+          <td class="group"> {% if item.grade contains "nullo" %}Informational text about {{ item.title}}{% else %}  {{ item.grade | capitalize}}-grade informational text about {{ item.title}} {% endif %}. </td>
            <td class="group">
-           {{item.subjects}} 
+           {{item.keywords}} 
          </td>
                                 
                </tr>
@@ -85,7 +88,7 @@
         	<div id="visualization" style="height:700px;width:100%;"></div>
       </div>
     </div>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script src="{{site.baseurl}}/js/fusion_dbs/{{ page.Path}}.js"></script>-->
 
 <script src="{{site.baseurl}}/js/datatables.js"></script>
@@ -93,7 +96,7 @@
 $(document).ready(function() {
 
     $('#librarystaff').dataTable( {
-		        "lengthMenu": [[ 25,50,100, 250,-1], [ 25,50,100, 250, "All"]]
+		        "lengthMenu": [[   -1,25,50,100, 250], [ "All",25,50,100, 250]]
 		       } );
 } );</script>
 

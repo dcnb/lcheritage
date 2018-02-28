@@ -15,14 +15,14 @@
   <div class=" col-md-4 col-sm-8 col-xs-12  center card no-border"><p class="card-text"><strong>Subjects:</strong><br/> 
   {% assign subjects = page.Subjects | split:';' %}
 {% for subject in subjects %}
-<a class="btn-sm btn-secondary btn" href="http://www.lib.uidaho.edu/digital/collections_search.html#{{ subject | strip }}">{{ subject }}</a>
+<a class="btn-sm btn-secondary btn" href="https://www.lib.uidaho.edu/digital/collections_search.html#{{ subject | strip }}">{{ subject }}</a>
 {% endfor %}</p>
 </div>
 
     <div class=" col-md-3 col-sm-6 col-xs-12 center card no-border"><p class="card-text"><strong>Type:</strong><br/>
     {% assign media = page.MediaType | split:' ' %}
 {% for medium in media %}
-<a class="btn-sm btn-secondary btn" href="http://www.lib.uidaho.edu/digital/collections_search.html#{{ medium | remove: ';' }}">{{ medium | remove: ';' }}</a>
+<a class="btn-sm btn-secondary btn" href="https://www.lib.uidaho.edu/digital/collections_search.html#{{ medium | remove: ';' }}">{{ medium | remove: ';' }}</a>
 {% endfor %}
     </p>
 </div>
@@ -32,7 +32,7 @@
         <p class="card-text"><strong>Locations:<br/></strong> 
          {% assign locations = page.Location | split:';' %}
 {% for location in locations %}
-<a class="btn-sm btn-secondary btn" href="http://www.lib.uidaho.edu/digital/collections_search.html#{{ location | strip }}">{{ location  }}</a>
+<a class="btn-sm btn-secondary btn" href="https://www.lib.uidaho.edu/digital/collections_search.html#{{ location | strip }}">{{ location  }}</a>
 {% endfor %}
 </p>    
 </div>
@@ -47,7 +47,7 @@
    
  
 
-   <img class="card-img-top" src="http://maps.google.com/maps/api/staticmap?center={{ page.Lat }},{{ page.Long }}&zoom=12&size=350x300&maptype=satellite&sensor=false&language=&markers=color:red|label:{{ page.Title }}|{{ page.Lat  }},{{ page.Long }}" alt="Card image cap"></a>
+   <img class="card-img-top" src="https://maps.google.com/maps/api/staticmap?center={{ page.Lat }},{{ page.Long }}&zoom=12&size=350x300&maptype=satellite&sensor=false&language=&markers=color:red|label:{{ page.Title }}|{{ page.Lat  }},{{ page.Long }}" alt="Card image cap"></a>
 <div class="person-stats">
 
 

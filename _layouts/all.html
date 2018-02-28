@@ -42,17 +42,17 @@
   <a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}">
  {% if forloop.index < 20 %}
        {% if item.type contains "Image" %}
-    <img class="card-img-top " style="height:290px; width:auto;" src="http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=25&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0" alt="{{ item.title}}"></a>
+    <img class="card-img-top " style="height:290px; width:auto;" src="https://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=25&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0" alt="{{ item.title}}"></a>
   {% else %}
 
-   <img class="bookimg " style="height:120px;" src="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/></a>
+   <img class="bookimg " style="height:120px;" src="https://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/></a>
      {% endif %}
  {% else %}
       {% if item.type contains "Image" %}
-    <img class="card-img-top lazy" style="height:330px; width:auto;" data-original="http://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=25&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0" alt="{{ item.title}}"></a>
+    <img class="card-img-top lazy" style="height:330px; width:auto;" data-original="https://digital.lib.uidaho.edu/utils/ajaxhelper/?CISOROOT={{page.CDMID}}&CISOPTR={{ item.cdmid }}&action=2&DMSCALE=25&DMWIDTH=512&DMHEIGHT=512&DMX=0&DMY=0&DMTEXT=&DMROTATE=0" alt="{{ item.title}}"></a>
   {% else %}
 
-   <img class="bookimg lazy" style="height:120px;" data-original="http://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/></a>
+   <img class="bookimg lazy" style="height:120px;" data-original="https://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/></a>
      {% endif %}
       {% endif %}
   </p>

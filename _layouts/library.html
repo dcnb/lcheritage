@@ -2,23 +2,22 @@
 <html>
 
   {% include head.html %}
-  <title>{{ page.title}} by {{ page.creator}} | Guided Reading Library | Digital Initiatives | University of Idaho Library</title>
-  <meta name="description" content="{{ page.title}} by {{ page.creator}}, a part of the Guided Reading Library.">
+  <title>{{ page.title}} by {{ page.author}} | Guided Reading Library | Digital Initiatives | University of Idaho Library</title>
+  <meta name="description" content="{% if page.grade contains "nullo" %}Informational text about {{ page.title}}{% else %}  {{ page.grade | capitalize}}-grade informational text about {{ page.title}} {% endif %}. Part of the Guided Reading Library, a collection of documents and sound files intended to improve literacy through reading aloud.">
 
 
   
   
   
-  {% if page.soundid contains "nullo" %}
+  {% if page.reader contains "none" %}
       {% else %}
-      <link type="text/css" href="http://www.lib.uidaho.edu/skin/jplayer.blue.monday.css" rel="stylesheet">
-      <script type="text/javascript" src="http://www.lib.uidaho.edu/js/jquery.jplayer.min.js"></script>
+      <link type="text/css" href="https://www.lib.uidaho.edu/skin/jplayer.blue.monday.css" rel="stylesheet">
+      <script type="text/javascript" src="https://www.lib.uidaho.edu/js/jquery.jplayer.min.js"></script>
       
       
       {% endif %}
 </head>
   <body>
-{% include collectionspull.html %}
     {% include collectionheaderlib.html %}
 
     <div class="page-content">
@@ -38,15 +37,17 @@
          <div class="col-lg-6 col-md-12 col-sm-12 center">
  
   
-   <h2>{{ page.title}} by {{ page.creator}}</h2>
+   <h2>{{ page.title}}</h2>
+   <h3> by {% if page.author contains "," %}{% assign names = page.author | split:',' %}
+                    {{ names | last }} {{ names | first }}{% else %}{{ page.author}}{% endif %}</h3>
    <p>{% if page.grade contains "nullo" %}Informational text about {{ page.title}} 
    {% else %}  {{ page.grade | capitalize}}-grade informational text about {{ page.title}} {% endif %}</p>
-    <h4>Download: <a href="http://digital.lib.uidaho.edu/utils/getfile/collection/guidedread/id/{{ page.cdmid}}/filename/{{ page.title}}562.pdf" target="_blank">PDF</a> {% if page.soundid contains "nullo" %}
-     {% else %}| <a href="/digital/mp3s/{{ page.file}}.mp3">MP3</a>   {% endif %}</h4>
+    <h4>Download: <a href="https://digital.lib.uidaho.edu/utils/getfile/collection/guidedread/id/{{ page.cdmid}}/filename/{{ page.title}}562.pdf" target="_blank">PDF</a> {% if page.reader contains "none" %}
+     {% else %}| <a href="https://www.lib.uidaho.edu/digital/mp3s/{{ page.id}}.mp3">MP3</a>   {% endif %}</h4>
             
             </div>
            <div class="col-lg-6 col-md-12 col-sm-12 center">
-            {% if page.soundid contains "nullo" %}
+            {% if page.reader contains "none" %}
             <p style="font-size:smaller; text-align:center;font-style:italic;">No sound file.</p>
             {% else %}
          
@@ -87,23 +88,25 @@
                   </div>
                   <div class="jp-no-solution"><span>Update Required</span> To play the media you will
                      need to either update your browser to a recent version
-                     or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>. 
+                     or update your <a href="https://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>. 
                   </div>
                </div>
             
               
               
             </div>
+              <br/>
+              <p>Read by {{page.reader}}</p>
              {% endif %}
           </div> 
           
            </div>
-			<!--<div style="width: 650px; height: 650px;text-align:center; margin:0% auto;" class="issuuembed" data-configid="2211907/11781906"></div><script type="text/javascript" src="//e.issuu.com/embed.js" async="true"></script></div>-->
-			<iframe src="http://digital.lib.uidaho.edu/cdm/pageflip/collection/guidedread/id/{{ page.cdmid}}/type/singleitem/pftype/pdf" class="iframe-flip">
+		
+			<iframe src="https://digital.lib.uidaho.edu/cdm/pageflip/collection/guidedread/id/{{ page.cdmid}}/type/singleitem/pftype/pdf" class="iframe-flip">
 			<p>Your browser does not support iframes.</p>
 </iframe>
       </div>
-      {% if page.soundid contains "nullo" %}
+      {% if page.reader contains "none" %}
       {% else %}
       <script type="text/javascript">
     $(document).ready(function(){
@@ -111,7 +114,7 @@
         ready: function () {
           $(this).jPlayer("setMedia", {
             title: "{{ page.title}}",
-            mp3: "/digital//mp3s/{{ page.file}}.mp3",
+            mp3: "https://www.lib.uidaho.edu/digital//mp3s/{{ page.id}}.mp3",
             
           });
         },

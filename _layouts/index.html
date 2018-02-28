@@ -15,47 +15,49 @@
       <div class="wrapper">
        
 <div style="width:80%;margin:0% auto;" class="introparagraphs">
-<p> The McCall Public Library Collection is a digital collection of local family history and subjects of interest. The documents were collected by the McCall Public Library and the Payette Lakes Progressive Club for over a half-century. This extensive collection of unique transcribed oral histories, obituaries, articles and photos filled up several filing cabinets in the Library. It began to be digitized in 2015, thanks to the Perc & Gladys Popsisil Shelton Foundation, the Idaho State Historical Society, and the McCall Local Option Tax funds, and was deposited in the University of Idaho digital collections starting in October 2016. Further work was supported by a grant from the Idaho Humanities Council in 2017. <!-- In the future, this site will also house the Library’s newspapers, which may include the Warren Times (1862 to 1942), Cascade Times, Stibnite Miner, Payette Lakes Star, and others.--> Thanks to the University of Idaho, all our funding sources and the many hours of volunteer work to get this project accessible to the community.</p>
-<p>You can search the books below by keyword or location.</p>
+<p> The Guided Reading Library is a digital collection of short books created by students in the University of Idaho's College of Education. This library is directed by <a href="https://vivo.nkn.uidaho.edu/vivo/display/n9735">Margaret Vaughn</a>, in collaboration with the Digital Inititiaves department of the University of Idaho Library. For more information about the collection and its contributors, <a href="about.html">click here</a>.</p>
+<p>You can search the books below by keyword or author, or use the links below to the left to limit your selections by grade level.</p>
 </div>
 <p class="center">
-<input type="text" id="quicksearch" placeholder="Search ... "> <input id="goButton" class="btn" title="Search" type="submit" value="Go" alt="Search" style="margin-top: -14px;"> <a class="vocab info2" href="#" data-filter="">Reset Search</a> <span class="info2"><span id="numberof">{{page.webitems}}</span> of {{page.webitems}} items</span> </p>
+<input type="text" id="quicksearch" placeholder="Search ... "> <input id="goButton" class="btn" title="Search" type="submit" value="Go" alt="Search" style="margin-top: -14px;"> <a class="vocab info2" href="#" data-filter="">Reset Search</a> <br class="hidden-md-up"> 
+<span class="info2"><span id="numberof">{{page.webitems}}</span> of {{page.webitems}} items</span> </p>
 
 
  
 <div id="filters">        
-    <div class="vocab-group js-radio-button-group" data-filter-group="subject" style="width:50%; float:left;text-align:center;">
-      <p><span class="info">Locations:</span>   <br/> 
-        
-  {% for item in site.data[page.locationfile] %}
+         <div class="vocab-group js-radio-button-group" data-filter-group="subject" style="width:100%; float:left;text-align:center;">
+    <p><span class="info">Grade Level:</span> <br class="hidden-sm-down"> 
+	<a class="vocab" href="#" data-filter="">All</a><br class="hidden-sm-down"> 
+<a class="vocab Kindergarten" href="#Kindergarten" data-filter="Kindergarten">Kindergarten</a><br class="hidden-sm-down"> 
+<a class="vocab First-Grade" href="#First-Grade" data-filter="First-Grade">First Grade</a><br class="hidden-sm-down"> 
+<a class="vocab Second-Grade" href="#Second-Grade" data-filter="Second-Grade">Second Grade</a><br class="hidden-sm-down"> 
+<a class="vocab Third-Grade" href="#Third-Grade" data-filter="Third-Grade">Third Grade</a><br class="hidden-sm-down"> 
+<a class="vocab Fourth-Grade" href="#Fourth-Grade" data-filter="Fourth-Grade">Fourth Grade</a><br class="hidden-sm-down"> 
+<a class="vocab Fifth-Grade" href="#Fifth-Grade" data-filter="Fifth-Grade">Fifth Grade</a><br class="hidden-sm-down"> 
 
- <a class="vocab {{item.location}}" href="#{{item.location | remove: ", ID"}}" data-filter="{{item.location | remove: ", ID"}}">{{item.location }}</a><br/>
-   {% endfor%}
+    </p>
+<p><span class="info">Subjects:</span> <br class="hidden-sm-down"> 
+<a class="vocab america" href="#america" data-filter="america">america</a><br class="hidden-sm-down">
+<a class="vocab animation" href="#animation" data-filter="animation">animation</a><br class="hidden-sm-down">
+<a class="vocab amphibian" href="#amphibian" data-filter="amphibian">amphibian</a><br class="hidden-sm-down">
+<a class="vocab cartoons" href="#cartoons" data-filter="cartoons">cartoons</a><br class="hidden-sm-down">
+<a class="vocab cycle" href="#cycle" data-filter="cycle">cycle</a><br class="hidden-sm-down">
+<a class="vocab dance" href="#dance" data-filter="dance">dance</a><br class="hidden-sm-down">
+<a class="vocab disney" href="#disney" data-filter="disney">disney</a><br class="hidden-sm-down">
+<a class="vocab dogs" href="#dogs" data-filter="dogs">dogs</a><br class="hidden-sm-down">
+<a class="vocab farm" href="#farm" data-filter="farm">farm</a><br class="hidden-sm-down">
+<a class="vocab fish" href="#fish" data-filter="fish">fish</a><br class="hidden-sm-down">
+<a class="vocab habitat" href="#habitat" data-filter="habitat">habitat</a><br class="hidden-sm-down">
+<a class="vocab history" href="#history" data-filter="history">history</a><br class="hidden-sm-down">
+<a class="vocab idaho" href="#idaho" data-filter="idaho">idaho</a><br class="hidden-sm-down">
+<a class="vocab life" href="#life" data-filter="life">life</a><br class="hidden-sm-down">
+<a class="vocab nature" href="#nature" data-filter="nature">nature</a><br class="hidden-sm-down">
+<a class="vocab solar" href="#solar" data-filter="solar">solar</a><br class="hidden-sm-down">
+<a class="vocab system" href="#system" data-filter="system">system</a><br class="hidden-sm-down">
+<a class="vocab turtles" href="#turtles" data-filter="turtles">turtles</a><br class="hidden-sm-down">
+
 </p>
-      </div>
-      <div class="vocab-group js-radio-button-group" data-filter-group="subject" style="width:50%; float:left;text-align:center;">
-      <p><span class="info">Decades:</span>   <br>   <a class="vocab 181" href="#181" data-filter="181">1810s</a><br/>
-<a class="vocab 182" href="#182" data-filter="182">1820s</a><br/>
-<a class="vocab 183" href="#183" data-filter="183">1830s</a><br/>
-<a class="vocab 184" href="#184" data-filter="184">1840s</a><br/>
-<a class="vocab 185" href="#185" data-filter="185">1850s</a><br/>
-<a class="vocab 186" href="#186" data-filter="186">1860s</a><br/>
-<a class="vocab 187" href="#187" data-filter="187">1870s</a><br/>
-<a class="vocab 188" href="#188" data-filter="188">1880s</a><br/>
-<a class="vocab 189" href="#189" data-filter="189">1890s</a><br/>
-<a class="vocab 190" href="#190" data-filter="190">1900s</a><br/>
-<a class="vocab 191" href="#191" data-filter="191">1910s</a><br/>
-<a class="vocab 192" href="#192" data-filter="192">1920s</a><br/>
-<a class="vocab 193" href="#193" data-filter="193">1930s</a><br/>
-<a class="vocab 194" href="#194" data-filter="194">1940s</a><br/>
-<a class="vocab 195" href="#195" data-filter="195">1950s</a><br/>
-<a class="vocab 196" href="#196" data-filter="196">1960s</a><br/>
-<a class="vocab 197" href="#197" data-filter="197">1970s</a><br/>
-<a class="vocab 198" href="#198" data-filter="198">1980s</a><br/>
-<a class="vocab 199" href="#199" data-filter="199">1990s</a><br/>
-<a class="vocab 200" href="#200" data-filter="200">2000s</a><br/>
-<a class="vocab 201" href="#201" data-filter="201">2010s</a></p>
-        </div>
+  </div>
 </div>
 
   
@@ -71,7 +73,7 @@
      <div class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
             <div id="countit" class="card">
               {% if page.colltitle contains 'McCall' %}
-               <div class="card-block">
+                <div class="card-block">
     <h3 class="card-title center">{{ item.title }} </h3>
      <p class="card-text center"><b>Dates</b>:{{item.span}}</p>
      <p class="center">
@@ -90,17 +92,24 @@
      </div>
   {%else%}
    <div class="card-block">
-    <h3 class="card-title center">{{ item.title }} </h3>
-     {% if item.theme %}<h4 class="card-title center"><em>{{item.theme}}</em></h4>{% endif %}
-     <p class="card-text center"><b>Date</b>:{{item.date}}</p>
+    <h3 class="card-title center"><a  target="_blank" href="library/{{ item.id }}.html">{{ item.title }}</a></h3>
+     <p class="card-text center">by {{item.author}}</p>
+ 
      <p class="center">
-     <a  target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}">
+     <a  target="_blank" href="library/{{ item.id }}.html">
              <img class="lazy" style="height:100px; width:auto;" data-original="https://digital.lib.uidaho.edu/utils/getthumbnail/collection/{{page.CDMID}}/id/{{item.cdmid}}"/>
                     </a></p>
                  
-    <p class="card-text center">{{item.description | truncatewords: 20}}</p>
-    <p style="display:none;">{{item.description}}{{item.keywords}}</p>
-    <p class="center"><a target="_blank" href="https://digital.lib.uidaho.edu/cdm/ref/collection/{{page.CDMID}}/id/{{ item.cdmid }}" class="btn btn-primary">Go to Item</a></p>
+   {% if item.grade contains "nullo" %}
+   {% else %}   
+   <p><span class="info">Reading Level:</span><span class="vocabulary" id="filterbox"><a class="vocab {{ item.grade | capitalize | append: "-Grade"}}" data-filter="{{ item.grade | capitalize | append: "-Grade"}}" href="/digital/guidedreading/index.html#{{ item.grade}}-Grade">{{ item.grade | capitalize | append: "-Grade"}}</a></span></p>{% endif %}
+                       <p><b>Keywords:</b><span class="info">Keywords:</span> <span class="vocabulary" id="filterbox">
+                         {% assign subjects = item.keywords | split:';' %}
+                     {% for subject in subjects %}
+                     <a class="vocab {{ subject | strip }}" data-filter="{{ subject | strip }}" href="#{{ subject | strip }}">{{ subject }}</a>
+                     {% endfor %}</span></p> 
+                     
+    <p class="center"><a target="_blank" href="library/{{ item.id }}.html" class="btn btn-primary">Go to Item</a></p>
     
   </div>
   {% endif %}

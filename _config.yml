@@ -12,6 +12,11 @@ description: > # this means to ignore newlines until "baseurl:"
  UI Lib Digital Initiatives
 baseurl: /digital
   
+page_gen:
+  - data: 'guidedreading'
+    template: 'library'
+    name: 'id'
+    dir: 'guidedreading/library'
 
 
 collections:
@@ -26,7 +31,7 @@ collections:
     permalink: /:path/about.html
   table:
     output: true
-    permalink: /:path/table.html
+    permalink: /:path/library/index.html
   library:
     output: true
     permalink: /guidedreading/library/:path.html

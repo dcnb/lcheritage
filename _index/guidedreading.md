@@ -1,6 +1,6 @@
 ---
 colltitle: Guided Reading Library
-webitems: 56
+webitems: 102
 Type: Collection
 Alpha: Guided
 CDMID: guidedread
@@ -20,7 +20,7 @@ width: na
 height: na
 Status: 
 short_desc: A library of guided reading material from the University of Idaho College of Education, curated by Margaret Vaughn
-menu: about table
+menu: about library subjects
 mapcenter: 
 fusionmap: 
 zoom: 

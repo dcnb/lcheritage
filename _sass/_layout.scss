@@ -50,6 +50,13 @@ font-size:$base-font-size + 5;
         }
     }
 
+    .featured{    border: 1px black solid;
+      padding: 2px 6px;
+      background: lightblue;
+      border-radius: 4px;}
+
+    .select{color:white}
+
     @include media-query($on-laptop) {
         position: absolute;
         top: 9px;

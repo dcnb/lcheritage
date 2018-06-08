@@ -40,9 +40,7 @@
    <h2>{{ page.title}}</h2>
    <h3> by {% if page.author contains "," %}{% assign names = page.author | split:',' %}
                     {{ names | last }} {{ names | first }}{% else %}{{ page.author}}{% endif %}</h3>
-   <p>{% if page.grade contains "nullo" %}Informational text about {{ page.title}} 
-   {% else %}  {{ page.grade | capitalize}}-grade informational text about {{ page.title}} {% endif %}</p>
-    <h4>Download: <a href="https://digital.lib.uidaho.edu/utils/getfile/collection/guidedread/id/{{ page.cdmid}}/filename/{{ page.title}}562.pdf" target="_blank">PDF</a> {% if page.reader contains "none" %}
+   <h4>Download: <a href="https://digital.lib.uidaho.edu/utils/getfile/collection/guidedread/id/{{ page.cdmid}}/filename/{{ page.title}}562.pdf" target="_blank">PDF</a> {% if page.reader contains "none" %}
      {% else %}| <a href="https://www.lib.uidaho.edu/digital/mp3s/{{ page.id}}.mp3">MP3</a>   {% endif %}</h4>
             
             </div>

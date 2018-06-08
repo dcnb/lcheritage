@@ -51,16 +51,17 @@
 
       <div class="trigger">
         <div class="col-md-8 col-sm-12" style="whitespace:nowrap;">
-  <a class="page-link" href="index.html" id="homehash" >Home</a> 
-{% if page.menu contains "about" %}<a class="page-link" href="about.html" id="abouthash" >About</a>{% endif %}
-{% if page.menu contains "map" %}<a class="page-link" href="map.html" id="maphash">Map</a>{% endif %}
-{% if page.menu contains "library" %}<a class="page-link" href="library/index.html" id="maphash">Library</a>{% endif %}
-{% if page.menu contains "interview" %}<a class="page-link" href="/digital/calnon/interview/viewer.php?cachefile=Calnon.xml" id="interviewhash" >Interview</a>{% endif %}
-{% if page.menu contains "timeline" %}<a class="page-link" href="timeline.html" id="timehash" >Timeline</a>{% endif %}
-{% if page.menu contains "subjects" %}<a class="page-link" href="subjects.html" id="subhash">Subjects</a>{% endif %}
-{% if page.menu contains "table" %}<a class="page-link" href="table.html" id="subhash">Table</a>{% endif %}
-{% if page.menu contains "all" %}<a class="page-link" href="all.html" id="allhash">View All</a>{% endif %}
+  <a class="page-link {% if page.url == '/' %}select{%endif%}" href="index.html" id="homehash" >Home</a> 
+{% if page.menu contains "about" %}<a class="page-link {% if page.url contains 'about' %}select{%endif%}" href="about.html" id="abouthash" >About</a>{% endif %}
+{% if page.menu contains "map" %}<a class="page-link {% if page.url contains 'map' %}select{%endif%}" href="map.html" id="maphash">Map</a>{% endif %}
+{% if page.menu contains "library" %}<a class="page-link {% if page.url contains 'library' %}select{%endif%}" href="library/index.html" id="maphash">Library</a>{% endif %}
+{% if page.menu contains "interview" %}<a class="page-link " href="/digital/calnon/interview/viewer.php?cachefile=Calnon.xml" id="interviewhash" >Interview</a>{% endif %}
+{% if page.menu contains "timeline" %}<a class="page-link {% if page.url contains 'timeline' %}select{%endif%}" href="timeline.html" id="timehash" >Timeline</a>{% endif %}
+{% if page.menu contains "subjects" %}<a class="page-link {% if page.url contains 'subjects' %}select{%endif%}" href="subjects.html" id="subhash">Subjects</a>{% endif %}
+{% if page.menu contains "table" %}<a class="page-link {% if page.url contains 'table' %}select{%endif%}" href="table.html" id="subhash">Table</a>{% endif %}
+{% if page.menu contains "all" %}<a class="page-link {% if page.url contains 'all' %}select{%endif%}" href="all.html" id="allhash">View All</a>{% endif %}
 <a class="page-link" href="https://digital.lib.uidaho.edu/cdm/search/collection/{{ page.CDMID}}" id="allhash">Database</a>
+<a class="page-link featured {% if page.url contains 'oems' %}select{%endif%}" href="/digital/guidedreading/library/NaturePoems.html" id="interviewhash" >Featured Book!</a>
         </div>
 <div class="col-md-4 pull-right">
  
